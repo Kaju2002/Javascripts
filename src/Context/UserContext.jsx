@@ -7,6 +7,7 @@ export const UserContext = createContext();
 export const UserContextProvider = ({ children }) => {
 
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const [userData, setUserData] = useState(false);
@@ -17,7 +18,7 @@ axios.defaults.withCredentials = true;
 
 const getUserData = async()=>{
   try {
-    const {data} = await axios.get('http://localhost:4000/api/user/data');
+    const {data} = await axios.get(`${API_BASE_URL}/api/user/data`);
     if (data.success) {
       setUserData(data.userData);
       setIsLoggedIn(true); // ✅ Add this line
@@ -42,7 +43,7 @@ useEffect(() => {
 const value ={
   userData, setUserData,
   isLoggedIn, setIsLoggedIn,
-  getUserData,loading 
+  getUserData,loading ,API_BASE_URL
 }
 
   return (

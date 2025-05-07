@@ -10,7 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const { setIsLoggedIn,getUserData } = useContext(UserContext);
+  const { setIsLoggedIn,getUserData,API_BASE_URL } = useContext(UserContext);
   
 
   const handleSubmit = async (e) => {
@@ -20,7 +20,7 @@ const Signup = () => {
       axios.defaults.withCredentials = true;
 
       const { data } = await axios.post(
-        "http://localhost:4000/api/auth/register",
+        `${API_BASE_URL}/api/auth/register`,
         {
           name,
           email,

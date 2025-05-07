@@ -12,7 +12,7 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { setIsLoggedIn, getUserData } = useContext(UserContext);
+  const { setIsLoggedIn, getUserData,API_BASE_URL } = useContext(UserContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const Signin = () => {
       axios.defaults.withCredentials = true;
 
       const { data } = await axios.post(
-        "http://localhost:4000/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         {
           email,
           password,

@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const { isLoggedIn, loading, userData, setIsLoggedIn, setUserData } =
     useContext(UserContext);
-  const { favoritesCount } = useContext(AppContext);
+  const { favoritesCount ,API_BASE_URL} = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:4000/api/auth/logout", {
+      await axios.post(`${API_BASE_URL}/api/auth/logout`, {
         withCredentials: true,
       });
       localStorage.removeItem("userId");

@@ -26,6 +26,7 @@ import {
   SignUp,
   UserProfile,
 } from "@clerk/clerk-react";
+//clear auth
 function App() {
   return (
     <Router>

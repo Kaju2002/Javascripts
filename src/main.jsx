@@ -3,7 +3,6 @@ import './index.css'
 import App from './App.jsx'
 import React from 'react';
 import { AppProvider } from './Context/AppContext.jsx';
-import { UserContextProvider } from './Context/UserContext.jsx';
 import { ClerkProvider } from '@clerk/clerk-react';
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -14,9 +13,7 @@ if (!PUBLISHABLE_KEY) {
 createRoot(document.getElementById('root')).render(
  <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/"> 
      <AppProvider>
-      <UserContextProvider>
       <App />
-      </UserContextProvider>
      </AppProvider>
     </ClerkProvider> 
 )

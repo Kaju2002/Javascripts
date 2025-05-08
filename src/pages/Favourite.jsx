@@ -25,10 +25,8 @@ const Favourite = () => {
         Here you can find the countries you marked as favorites.
       </p>
 
-      {/* Check if user is logged in */}
-      {/* Check if user is logged in */}
+     
       {!isSignedIn ? (
-        // Attractive "Access Denied" Card - No Custom Animations
         <div className="max-w-lg mx-auto mt-16 sm:mt-20 bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-gray-100 text-center group transition-all duration-300 ease-out">
           {/* Icon Container */}
           <div className="mx-auto flex items-center justify-center h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gray-100 mb-6 border-2 border-gray-200 group-hover:border-gray-300 transition-colors duration-300">

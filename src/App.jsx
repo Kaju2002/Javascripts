@@ -7,9 +7,6 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CountryPage from "./pages/CountryPage";
 import Favourite from "./pages/Favourite";
-//import Signin from './components/Signin';
-//import Signup from './components/Signup';
-//import Profile from "./components/Profile";
 import CursorHighlight from "./components/CursorHighlight";
 import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
@@ -38,8 +35,19 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/country" element={<CountryPage />} />
-            <Route path="/favourite" element={<Favourite />} />
-            <Route path="/country-details/:code" element={<CountryDetails />} />
+            <Route
+  path="/favourite"
+  element={
+    <> {/* Use a fragment if you have multiple top-level elements */}
+      <SignedIn>
+        <Favourite />
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn redirectUrl="/favourite" /> {/* Redirect to sign-in if not authenticated */}
+      </SignedOut>
+    </>
+  }
+/>            <Route path="/country-details/:code" element={<CountryDetails />} />
             <Route
               path="/sign-in/*"
               element={

@@ -1,18 +1,24 @@
 import React, { useContext } from "react";
 import DetailsMore from "./countryDetails/DetailsMore";
 import TouristPlaces from "./countryDetails/TouristPpaces";
-import { UserContext } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { useAuth } from '@clerk/clerk-react';
 const CountryDetails = () => {
-  const { isLoggedIn } = useContext(UserContext);
+  const { isSignedIn, isLoaded } = useAuth();
   const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleGoBack = () => {
     navigate(-1); // This will navigate to the previous page
   };
 
+  if (!isLoaded) {
+    return (
+      <div className="max-w-7xl mx-auto p-6 mt-20 text-center">
+        Loading details...
+      </div>
+    );
+  }
   return (
     <div className="max-w-7xl mx-auto p-6 mt-20">
       {/* Back Button */}
@@ -37,7 +43,7 @@ const CountryDetails = () => {
         Back
       </button>
 
-      {!isLoggedIn ? (
+      {!isSignedIn  ? (
         // Attractive "Access Denied" Card for Details Page
         <div className="max-w-lg mx-auto mt-12 sm:mt-16 bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-gray-100 text-center group transition-all duration-300 ease-out">
           {/* Icon Container */}

@@ -2,21 +2,32 @@ import React, { useContext, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { AppContext } from "../Context/AppContext"; // Adjust the path as needed
 import { Link } from "react-router-dom";
-import { UserContext } from "../Context/UserContext";
 import { toast } from "react-toastify";
-
+import { useAuth } from "@clerk/clerk-react";
 const CountryCard = ({ country }) => {
+  const { isSignedIn } = useAuth(); //
   const { toggleFavorite, isFavorite } = useContext(AppContext);
-  const { isLoggedIn } = useContext(UserContext); // ✅ Check login status
-  const [showLoginAlert, setShowLoginAlert] = useState(false); // ✅ local alert state
+  const [showLoginAlert, setShowLoginAlert] = useState(false);
 
-  const handleFavoriteClick = () => {
-    if (!isLoggedIn) {
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isSignedIn) {
       setShowLoginAlert(true);
-      setTimeout(() => setShowLoginAlert(false), 5000); // auto-dismiss after 5s
+      //toast.info("Please sign in to add favorites.");
+      setTimeout(() => setShowLoginAlert(false), 3000);
+
       return;
     }
+
     toggleFavorite(country);
+
+    toast.success(
+      isFavorite(country.cca3)
+        ? `${country.name?.common} removed from favorites!`
+        : `${country.name?.common} added to favorites!`
+    );
   };
 
   return (
@@ -57,7 +68,11 @@ const CountryCard = ({ country }) => {
               onClick={handleFavoriteClick}
               className="text-xl text-red-500 hover:scale-110 transition-transform"
             >
-              {isFavorite(country.cca3) ? <FaHeart /> : <FaRegHeart />}
+              {isSignedIn && isFavorite(country.cca3) ? (
+                <FaHeart />
+              ) : (
+                <FaRegHeart />
+              )}
             </button>
           </div>
 

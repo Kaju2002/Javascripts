@@ -43,7 +43,7 @@ const CountryDetails = () => {
         Back
       </button>
 
-      (
+      {!isSignedIn  ? (
         // Attractive "Access Denied" Card for Details Page
         <div className="max-w-lg mx-auto mt-12 sm:mt-16 bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-gray-100 text-center group transition-all duration-300 ease-out">
           {/* Icon Container */}
@@ -89,7 +89,7 @@ const CountryDetails = () => {
           <DetailsMore />
           <TouristPlaces />
         </div>
-      )
+      )}
     </div>
   );
 };

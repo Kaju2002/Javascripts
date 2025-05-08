@@ -24,11 +24,11 @@ const getUserData = async()=>{
       setIsLoggedIn(true); // ✅ Add this line
     } else {
       setIsLoggedIn(false);
-      toast.error(data.message);
+      //toast.error(data.message);
     }
   } catch (error) {
     if (error.response?.status !== 401) {
-      toast.error(error.response?.data?.message || error.message);
+      //toast.error(error.response?.data?.message || error.message);
     }
     setIsLoggedIn(false)
     }finally {

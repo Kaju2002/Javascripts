@@ -6,25 +6,23 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CountryPage from "./pages/CountryPage";
-import Favourite from "./pages/Favourite"; // Your Favourite.jsx component
+import Favourite from "./pages/Favourite"; 
 import CursorHighlight from "./components/CursorHighlight";
 import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { toast } from "react-toastify"; // toast is usually called within components, not globally here
 import CountryDetails from "./components/CountryDetails";
 // Clerk imports
 import {
-  SignedIn, // Keep for other routes if needed
-  SignedOut, // Keep for other routes if needed
-  RedirectToSignIn, // Keep for other routes if needed
+  SignedIn, 
+  SignedOut,
+  RedirectToSignIn, 
   SignIn,
   SignUp,
   UserProfile,
 } from "@clerk/clerk-react";
 
-// NOTE: ClerkProvider should be in main.jsx/index.js, not here, if it isn't already.
-// If ClerkProvider is here, it's fine, but usually it's one level higher.
+
 
 function App() {
   return (
@@ -38,20 +36,17 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/country" element={<CountryPage />} />
 
-            {/* ========== THIS IS THE CORRECTED ROUTE ========== */}
             <Route
               path="/favourite"
-              element={<Favourite />} // Render Favourite component directly
-                                      // It will handle its own auth check and prompt
+              element={<Favourite />} 
             />
-            {/* ================================================ */}
 
             <Route path="/country-details/:code" element={<CountryDetails />} />
             <Route
               path="/sign-in/*"
               element={
                 <div className="flex justify-center items-center min-h-[calc(100vh-10rem)]">
-                  <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" redirectUrl="/" /> {/* Added redirectUrl */}
+                  <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" redirectUrl="/" />
                 </div>
               }
             />
@@ -59,7 +54,7 @@ function App() {
               path="/sign-up/*"
               element={
                 <div className="flex justify-center items-center min-h-[calc(100vh-10rem)]">
-                  <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" redirectUrl="/" /> {/* Added redirectUrl */}
+                  <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" redirectUrl="/" /> 
                 </div>
               }
             />

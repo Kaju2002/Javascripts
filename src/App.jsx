@@ -6,24 +6,24 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CountryPage from "./pages/CountryPage";
-import Favourite from "./pages/Favourite";
+import Favourite from "./pages/Favourite"; 
 import CursorHighlight from "./components/CursorHighlight";
 import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
 import CountryDetails from "./components/CountryDetails";
-//I used clerk
+// Clerk imports
 import {
-  ClerkProvider,
-  SignedIn,
+  SignedIn, 
   SignedOut,
-  RedirectToSignIn,
+  RedirectToSignIn, 
   SignIn,
   SignUp,
   UserProfile,
 } from "@clerk/clerk-react";
-//clear auth
+
+
+
 function App() {
   return (
     <Router>
@@ -35,26 +35,18 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/country" element={<CountryPage />} />
+
             <Route
-  path="/favourite"
-  element={
-    <> {/* Use a fragment if you have multiple top-level elements */}
-      <SignedIn>
-        <Favourite />
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn redirectUrl="/favourite" /> {/* Redirect to sign-in if not authenticated */}
-      </SignedOut>
-    </>
-  }
-/>            <Route path="/country-details/:code" element={<CountryDetails />} />
+              path="/favourite"
+              element={<Favourite />} 
+            />
+
+            <Route path="/country-details/:code" element={<CountryDetails />} />
             <Route
               path="/sign-in/*"
               element={
                 <div className="flex justify-center items-center min-h-[calc(100vh-10rem)]">
-                  {" "}
-                  {/* Adjust min-h as needed */}
-                  <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" />
+                  <SignIn routing="path" path="/sign-in" signUpUrl="/sign-up" redirectUrl="/" />
                 </div>
               }
             />
@@ -62,32 +54,21 @@ function App() {
               path="/sign-up/*"
               element={
                 <div className="flex justify-center items-center min-h-[calc(100vh-10rem)]">
-                  {" "}
-                  {/* Adjust min-h as needed */}
-                  <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" />
+                  <SignUp routing="path" path="/sign-up" signInUrl="/sign-in" redirectUrl="/" /> 
                 </div>
               }
             />
             <Route
-              path="/profile/*" // Note the "/*"
+              path="/profile/*"
               element={
-                // --- CHANGE: Added Centering Wrapper Div ---
-                <div className="flex justify-center py-8 mb-10"> {/* py-4 adds some top/bottom padding */}
+                <div className="flex justify-center py-8 mb-10">
                   <SignedIn>
-                      {/* You might want to add max-width to UserProfile via appearance prop if needed */}
-                      <UserProfile path="/profile" routing="path" appearance={{
-                          // Optional: Add custom styles if needed, e.g., max width
-                          // elements: {
-                          //   card: "mx-auto max-w-4xl" // Example: Center card within flex and limit width
-                          // }
-                      }} />
+                    <UserProfile path="/profile" routing="path" appearance={{/* ... */}} />
                   </SignedIn>
                   <SignedOut>
-                    {/* RedirectToSignIn doesn't need centering, it just navigates away */}
                     <RedirectToSignIn redirectUrl={window.location.pathname + window.location.search} />
                   </SignedOut>
                 </div>
-                // --- END CHANGE ---
               }
             />
             <Route path="*" element={<NotFound />} />

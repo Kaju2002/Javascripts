@@ -2,15 +2,15 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'; // Preferred for interactions
+import userEvent from '@testing-library/user-event'; 
 import '@testing-library/jest-dom';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import RegionFilter from '../components/RegionFilter'; // Adjust path
-import { AppContext } from '../Context/AppContext'; // Adjust path
+import RegionFilter from '../components/RegionFilter'; 
+import { AppContext } from '../Context/AppContext'; 
 
 describe('RegionFilter Component', () => {
-  let mockSetRegion; // Mock function to track calls
+  let mockSetRegion; 
 
   // Helper function to render with context
   const renderWithContext = (initialRegion = 'All') => {
@@ -18,7 +18,6 @@ describe('RegionFilter Component', () => {
     const contextValue = {
       region: initialRegion,
       setRegion: mockSetRegion,
-      // Add other AppContext values if RegionFilter ever uses them (currently doesn't)
     };
     return render(
       <AppContext.Provider value={contextValue}>
@@ -28,13 +27,12 @@ describe('RegionFilter Component', () => {
   };
 
   beforeEach(() => {
-    vi.clearAllMocks(); // Clear any previous mock calls
+    vi.clearAllMocks(); 
   });
 
   it('renders the select dropdown with options', () => {
     renderWithContext();
 
-    // Check if the select element exists (using role 'combobox' for select)
     const selectElement = screen.getByRole('combobox');
     expect(selectElement).toBeInTheDocument();
 
@@ -53,7 +51,7 @@ describe('RegionFilter Component', () => {
     renderWithContext(initialRegion);
 
     const selectElement = screen.getByRole('combobox');
-    expect(selectElement).toHaveValue(initialRegion); // Check if the select value matches
+    expect(selectElement).toHaveValue(initialRegion); 
   });
 
   it('calls setRegion from context when a new region is selected', async () => {

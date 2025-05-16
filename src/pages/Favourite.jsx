@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "../Context/AppContext"; // Assuming this path is correct
-import CountryCard from "../components/CountryCard"; // Assuming this path is correct
+import { AppContext } from "../Context/AppContext"; 
+import CountryCard from "../components/CountryCard"; 
 import { Link } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
-import { Lock, Heart, Search } from "lucide-react"; // Importing icons
+import { Lock, Heart, Search } from "lucide-react";
 
 const Favourite = () => {
   const { favorites } = useContext(AppContext);

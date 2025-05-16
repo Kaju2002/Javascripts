@@ -31,8 +31,7 @@ function App() {
       <CursorHighlight />
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow p-4">
-          <Routes>
+  <main className="flex-grow p-4 pt-20">          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/country" element={<CountryPage />} />
 

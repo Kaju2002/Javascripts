@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "../Context/AppContext"; // adjust the import path
+import { AppContext } from "../Context/AppContext"; 
 import CountryCard from "../components/CountryCard";
 import SearchBar from "../components/SearchBar";
 import RegionFilter from "../components/RegionFilter";
@@ -32,13 +32,7 @@ const CountryPage = () => {
 
 
 
-      {/* Display filtered countries with pagination
-<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-  {currentItems.map((country) => (
-    <CountryCard key={country.cca3} country={country} />
-  ))}
-</div> */}
-
+     
 
       {/* Pagination */}
       <div className="flex justify-center items-center mt-10 space-x-2 text-sm text-gray-600">

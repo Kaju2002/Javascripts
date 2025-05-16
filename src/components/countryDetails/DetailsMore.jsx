@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AppContext } from "../../Context/AppContext"; // Adjust path if needed
+import { AppContext } from "../../Context/AppContext"; 
 import {
   FaUsers,
   FaGlobe,

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
-import CurrencyConverter from "./CurrencyConverter"; // Import CurrencyConverter
+import CurrencyConverter from "./CurrencyConverter"; 
 import CountryStatistics from "./CountryStatistics";
-import Modal from "react-modal"; // Importing the Modal component
+import Modal from "react-modal"; 
 
 // Ensure modal styles are attached to the root element
 Modal.setAppElement('#root');

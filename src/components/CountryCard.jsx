@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { AppContext } from "../Context/AppContext"; // Adjust the path as needed
+import { AppContext } from "../Context/AppContext"; 
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "@clerk/clerk-react";

@@ -141,21 +141,10 @@ describe('CountryPage Component', () => {
      };
      renderWithContext(context);
 
-     // Assert: Verify the text exists using a less strict regex,
-     // focusing on the pattern rather than exact calculated numbers in the test.
-     // This assumes your component DOES render text like "Showing X to Y of Z items".
+   
      const countText = screen.getByText(/Showing \d+ to \d+ of \d+ items/i);
      expect(countText).toBeInTheDocument();
 
-     // Optional, more specific checks if needed (but rely on component's output):
-     // You could extract the numbers if the format is guaranteed,
-     // but checking the pattern is often sufficient for a unit test.
-     // Example (more brittle):
-     // expect(countText).toHaveTextContent('Showing 21'); // Check starting number
-     // expect(countText).toHaveTextContent('to 35');    // Check ending number (21 + 15 - 1)
-     // expect(countText).toHaveTextContent('of 15 items'); // Check count of items *on the page* (based on your component's current text)
-                                                          // OR check totalItems if your component text uses that:
-                                                          // expect(countText).toHaveTextContent(`of ${context.totalItems} items`);
 
   });
 

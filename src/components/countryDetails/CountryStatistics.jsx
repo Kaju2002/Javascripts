@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AppContext } from "../../Context/AppContext"; // Adjust path if needed
-import { Pie } from "react-chartjs-2"; // Import Pie chart
+import { AppContext } from "../../Context/AppContext"; 
+import { Pie } from "react-chartjs-2"; 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 // Register Chart.js components
